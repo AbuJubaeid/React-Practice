@@ -1,29 +1,48 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
-// import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './AuthReducer';
+import counterReducer from './CounterSlice';
 
-const initialState = {counter:0, showCounter:true}
+// const initialCounterState = { counter: 0, showCounter: true };
 
-const counterSlice = createSlice({
-    name:'counter',
-    initialState,
-    reducers:{
+// slice use kore create kora component gulo alada alada file e rekhe deya jay...
+
+// const counterSlice = createSlice({
+//   name: 'counter',
+//   initialState: initialCounterState,
+//   reducers: {
         // redux nije theke ekhane ei state gulake call kore tai extra kore ekhane action deyar dorkar hoy na....
-        increment(state) {
-            state.counter++
-        },
-        decrement(state) {
-            state.counter--
-        },
-        // ekhane action er sathe extra payload ase tai action use kora hoise..... 
-        increase(state, action) {
-            state.counter = state.counter + action.payload
-        },
-        toggleCounter(state){
-            state.showCounter = !state.showCounter
-        }
-    }
-
-})
+    //     increment(state) {
+    //         state.counter++;
+    //       },
+    //       decrement(state) {
+    //         state.counter--;
+    //       },
+    //     // ekhane action er sathe extra payload ase tai action use kora hoise..... 
+    //     increase(state, action) {
+    //         state.counter = state.counter + action.payload;
+    //       },
+    //       toggleCounter(state) {
+    //         state.showCounter = !state.showCounter;
+    //       },
+    //     },
+    //   });
+      
+    //   const initialAuthState = {
+    //     isAuthenticated: false,
+    //   };
+      
+    //   const authSlice = createSlice({
+    //     name: 'authentication',
+    //     initialState: initialAuthState,
+    //     reducers: {
+    //       login(state) {
+    //         state.isAuthenticated = true;
+    //       },
+    //       logout(state) {
+    //         state.isAuthenticated = false;
+    //       },
+    //     },
+    //   });
 // ami jokhon createSlice use korbo tokhon r egulor dorkar hobena...
 //creating reducer function which will change the store
 // const counterReducer = (state = initialState, action) => {
@@ -72,9 +91,8 @@ const counterSlice = createSlice({
 // onno r ekti property name
 // }
 const store = configureStore({
-    reducer: counterSlice.reducer
-
-})
+    reducer: { counter: counterReducer, auth: authReducer },
+  });
 
 //it will get the new state that will be produced by reducer function
 // const counterSubscriber = () => {
@@ -86,5 +104,7 @@ const store = configureStore({
 
 // store.dispatch({type:'increment'})
 // store.dispatch({type:'decrement'})
-export const counterActions = counterSlice.actions
-export default store
+// export const counterActions = counterReducer.actions;
+// export const authActions = authReducer.actions;
+
+export default store;
