@@ -1,17 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 // import { Component, connect } from 'redux';
-import { counterActions } from '../store/index.js';
+import { counterActions } from '../store/CounterSlice.js';
 import classes from './Counter.module.css';
 
+
 const Counter = () => {
+
   const toggleCounterHandler = () => {
     dispatch(counterActions.toggleCounter())
   };
 
 
      //ekti function pass korbe je function ti ekta state ke extract kore niye asbe store theke
-  const Counter = useSelector(state => state.counter)
-  const Show = useSelector(state => state.showCounter)
+  const Counter = useSelector(state => state.counter.counter)
+  const Show = useSelector(state => state.counter.showCounter)
 
   //eti ekti action perform korbe ja store e thakbe
   const dispatch = useDispatch()
